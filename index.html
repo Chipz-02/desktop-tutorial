@@ -2,17 +2,20 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>My Observable Chart</title>
+  <title>My Observable Chart with Filter</title>
 </head>
 <body>
-  <h1>Look at my chart! 🎉</h1>
-  <div id="chart"></div>
+  <h1>THE LARGEST VOCABULARY IN HIP HOP</h1>
+
+  <div id="selection"></div> <!-- This is for the radio button -->
+  <div id="chart"></div>     <!-- This is for your chart -->
 
   <script type="module">
     import { Runtime, Inspector } from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@5/dist/runtime.js";
     import define from "https://api.observablehq.com/d/120634d692da8f6f.js?v=4";
 
     new Runtime().module(define, name => {
+      if (name === "viewof selection") return new Inspector(document.getElementById("selection"));
       if (name === "chart") return new Inspector(document.getElementById("chart"));
     });
   </script>
